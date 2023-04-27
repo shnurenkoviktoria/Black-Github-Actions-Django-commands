@@ -1,5 +1,9 @@
-from django.http import HttpResponse
+from django.shortcuts import render
+
+from .models import Teacher
 
 
-def index(request):
-    return HttpResponse("Hello, world. You're at the polls index.")
+
+def teachers_list(request):
+    teachers = list(Teacher.objects.values())
+    return render(request, "teachers_list.html", context={'teachers': teachers})
